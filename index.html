@@ -5,35 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SiveProject | UTAU音源配布</title>
     <style>
+        /* --- 変数の設定（システム設定ベース） --- */
+        :root {
+            --bg-color: #f4f7f9;
+            --card-bg: #ffffff;
+            --text-color: #000000;
+            --border-color: #eaeaea;
+            --rule-bg: #fff0f0;
+            --rule-border: #ffcccc;
+        }
+
+        /* --- システムがダークモードなら自動で切り替え --- */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --card-bg: #1e1e1e;
+                --text-color: #e0e0e0;
+                --border-color: #333;
+                --rule-bg: #2d1a1a;
+                --rule-border: #5c2b2b;
+            }
+        }
+
+        /* --- 手動切り替え用の上書き --- */
+        [data-theme="light"] {
+            --bg-color: #f4f7f9;
+            --card-bg: #ffffff;
+            --text-color: #000000;
+            --border-color: #eaeaea;
+            --rule-bg: #fff0f0;
+            --rule-border: #ffcccc;
+        }
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --border-color: #333;
+            --rule-bg: #2d1a1a;
+            --rule-border: #5c2b2b;
+        }
+
         body {
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
             margin: 0; padding: 0;
-            background-color: #f4f7f9;
-            color: #000000;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.8;
+            transition: 0.3s;
         }
+
         header {
-            background-color: #ffffff;
+            background-color: var(--card-bg);
             padding: 30px 20px;
             text-align: center;
-            border-bottom: 2px solid #eaeaea;
+            border-bottom: 2px solid var(--border-color);
         }
+
         .container {
             max-width: 1000px;
             margin: 30px auto;
             padding: 20px;
         }
+
         .character-card {
-            background: #fff;
+            background: var(--card-bg);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
             align-items: center;
+            border: 1px solid var(--border-color);
         }
+
         .char-info { flex: 1; min-width: 300px; }
         .char-img-container { flex: 0 0 300px; text-align: center; }
         .char-img {
@@ -42,58 +88,63 @@
             border-radius: 10px;
         }
         
-        /* 共通のボタン基本スタイル */
         .detail-btn {
             display: inline-block;
             margin-top: 15px;
             padding: 10px 24px;
-            color: white;
+            color: white !important;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             transition: 0.3s;
         }
-        .detail-btn:hover {
-            opacity: 0.8;
-            transform: translateY(-2px);
-        }
-
-        /* 正弦波くん専用カラー！ */
-        .btn-jack {
-            background-color: #FC0254;
-        }
-
-        /* ナノカ専用カラー！ */
-        .btn-nanoka {
-            background-color: #0CBFBD;
-        }
+        .detail-btn:hover { opacity: 0.8; transform: translateY(-2px); }
+        .btn-jack { background-color: #FC0254; }
+        .btn-nanoka { background-color: #0CBFBD; }
         
         .rules-section {
-            background-color: #fff0f0;
-            border: 1px solid #ffcccc;
+            background-color: var(--rule-bg);
+            border: 1px solid var(--rule-border);
             border-radius: 15px;
             padding: 30px;
-            text-align: center; /* 中央寄せにしてボタンを目立たせたよ */
+            text-align: center;
         }
         
-        /* 規約へ飛ぶボタン */
         .rules-btn {
             display: inline-block;
             margin-top: 15px;
             padding: 8px 20px;
-            background-color: #333;
-            color: #fff;
+            background-color: var(--text-color);
+            color: var(--bg-color);
             text-decoration: none;
             border-radius: 5px;
             font-size: 0.9rem;
         }
-        .rules-btn:hover { background-color: #555; }
 
-        footer { text-align: center; padding: 50px; color: #999; }
+        footer { text-align: center; padding: 50px; color: #888; border-top: 1px solid var(--border-color); }
+        
+        /* モード切り替えボタン */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            font-size: 1.2rem;
+        }
+
         @media (max-width: 768px) { .character-card { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
+
+<button class="theme-toggle" onclick="toggleTheme()" title="モード切り替え">🌓</button>
 
 <header>
     <h1>SiveProject</h1>
@@ -137,11 +188,32 @@
 </div>
 
 <footer>
+    <div style="margin-bottom: 20px;">
+        <span style="font-weight: bold; color: #999;">Gmail</span><br>
+        <a href="mailto:0329.mth@gmail.com" style="color: #81D4FA; text-decoration: none; font-size: 1rem;">0329.mth@gmail.com</a>
+    </div>
     <p style="letter-spacing: 1px;">&copy; 2026 SiveProject All Rights Reserved.</p>
-<div class="contact-item">
-            <span style="font-weight: bold; color: #989999;">Gmail</span><br>
-            <a href="mailto:0329.mth@gmail.com" style="color: #81D4FA; text-decoration: none; font-size: 1rem;">0329.mth@gmail.com</a>
-        </div>
 </footer>
+
+<script>
+    // --- テーマ切り替えの魔法 ---
+    function toggleTheme() {
+        const body = document.body;
+        const currentTheme = body.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+            body.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+    // 保存された設定があれば適用
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.body.setAttribute('data-theme', savedTheme);
+    }
+</script>
+
 </body>
 </html>
