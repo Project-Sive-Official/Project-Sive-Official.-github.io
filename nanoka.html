@@ -26,7 +26,7 @@
             }
         }
 
-        /* --- 手動切り替え用の上書き --- */
+        /* --- 手動切り替え（ホーム画面の設定）用の上書き --- */
         [data-theme="light"] {
             --bg-color: #ffffff;
             --container-bg: #ffffff;
@@ -113,27 +113,9 @@
             color: #888;
             border-top: 1px solid var(--border-color);
         }
-
-        /* モード切り替えボタン */
-        .theme-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            background: var(--container-bg);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            font-size: 1.2rem;
-        }
     </style>
 </head>
 <body>
-
-<button class="theme-toggle" onclick="toggleTheme()" title="モード切り替え">🔆/🌙</button>
 
 <div class="container">
     <img src="image/ナノカ（設定）.AVIF" alt="正幻波ナノカ" class="main-img">
@@ -168,17 +150,7 @@
 </footer>
 
 <script>
-    function toggleTheme() {
-        const body = document.body;
-        const currentTheme = body.getAttribute('data-theme');
-        if (currentTheme === 'dark') {
-            body.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-        } else {
-            body.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        }
-    }
+    // ホーム画面（index.html）で保存したテーマ設定を読み込んで反映！
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         document.body.setAttribute('data-theme', savedTheme);
