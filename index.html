@@ -56,9 +56,31 @@
 
         header {
             background-color: var(--card-bg);
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
             border-bottom: 2px solid var(--border-color);
+            position: relative; /* ボタン配置の基準にするよ */
+        }
+
+        /* ヘッダー内の切り替えボタン */
+        .theme-toggle-header {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            background: var(--bg-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .theme-toggle-header:hover {
+            transform: scale(1.05);
+            background: var(--border-color);
         }
 
         .container {
@@ -123,30 +145,17 @@
 
         footer { text-align: center; padding: 50px; color: #888; border-top: 1px solid var(--border-color); }
         
-        /* モード切り替えボタン */
-        .theme-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            background: var(--card-bg);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            font-size: 1.2rem;
+        @media (max-width: 768px) { 
+            .character-card { flex-direction: column; text-align: center; }
+            .theme-toggle-header { position: static; margin-top: 15px; display: inline-block; }
         }
-
-        @media (max-width: 768px) { .character-card { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
 
-<button class="theme-toggle" onclick="toggleTheme()" title="モード切り替え">🔆/🌙</button>
-
 <header>
+    <button class="theme-toggle-header" onclick="toggleTheme()" title="モード切り替え">🔆 / 🌙</button>
+    
     <h1>SiveProject</h1>
     <p>正弦波くんとナノカの音源を配布しています。</p>
 </header>
@@ -157,7 +166,7 @@
             <h3>正弦波ジャック（正弦波くん）</h3>
             <ul>
                 <li>zipのままOpen UTAUへD&D！</li>
-                <li>UTAU本体は解凍してUTAUのvoiceフォルダへ！</li>
+                <li>UTAU本体は解凍してUTAU의 voiceフォルダへ！</li>
                 <li>MacOS・Linuxの動作確認はしておりません。​​</li>
             </ul>
             <a href="jack.html" class="detail-btn btn-jack">正弦波くんのプロフィールを見る</a>
@@ -196,7 +205,6 @@
 </footer>
 
 <script>
-    // --- テーマ切り替えの魔法 ---
     function toggleTheme() {
         const body = document.body;
         const currentTheme = body.getAttribute('data-theme');
@@ -208,7 +216,6 @@
             localStorage.setItem('theme', 'dark');
         }
     }
-    // 保存された設定があれば適用
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         document.body.setAttribute('data-theme', savedTheme);
