@@ -6,91 +6,95 @@
     <title>正幻波ナノカ | SiveProject</title>
     <style>
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
             margin: 0; padding: 0;
-            background-color: #fff0f5; /* ナノカっぽい薄いピンク */
+            background-color: #fffafb;
             color: #333;
             line-height: 1.8;
         }
         header {
             background: #fff;
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
-            border-bottom: 2px solid #ffb6c1;
+            border-bottom: 3px solid #ffc0cb;
         }
         .container {
-            max-width: 800px;
-            margin: 30px auto;
+            max-width: 900px;
+            margin: 20px auto;
             padding: 20px;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        .profile-section {
+        .main-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 30px;
             margin-bottom: 30px;
         }
-        .char-main-img {
-            max-width: 300px;
+        .char-img {
+            max-width: 350px;
             width: 100%;
             border-radius: 10px;
         }
-        .profile-text { flex: 1; min-width: 250px; }
-        .setting-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
+        .profile { flex: 1; min-width: 300px; }
+        .setting-gallery {
+            margin-top: 40px;
+            text-align: center;
         }
-        .setting-images img {
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid #eee;
+        .setting-img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-top: 15px;
         }
-        .back-link {
+        .back-btn {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
             text-decoration: none;
-            color: #ff69b4;
-            font-weight: bold;
+            border-radius: 5px;
+        }
+        @media (max-width: 768px) {
+            .main-card { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>正幻波ナノカ - Profile</h1>
+    <h1>正幻波ナノカ Profile</h1>
 </header>
 
 <div class="container">
-    <div class="profile-section">
-        <img src="image/ナノカ（ホーム）.AVIF" alt="ナノカ" class="char-main-img">
-        <div class="profile-text">
+    <div class="main-card">
+        <img src="image/ナノカ（ホーム）.AVIF" alt="ナノカ ホーム" class="char-img">
+        <div class="profile">
             <h2>正幻波ナノカ</h2>
             <p><strong>「こんにちは、正幻波ナノカです！」</strong></p>
             <ul>
-                <li><strong>種類：</strong> UTAU音源</li>
                 <li><strong>中の人：</strong> ユマ</li>
-                <li><strong>特徴：</strong> 正弦波くんと一緒に活動中！</li>
+                <li><strong>配布形式：</strong> UTAU単独音</li>
             </ul>
-            <p>詳しい設定は下の設定画をチェックしてね！</p>
+            <p>正弦波くんと一緒に、いろんな歌を歌わせてあげてくださいね。</p>
         </div>
     </div>
 
-    <hr>
-
-    <h3>設定資料</h3>
-    <div class="setting-images">
-        <img src="image/ナノカ（設定）.AVIF" alt="ナノカ設定画">
+    <div class="setting-gallery">
+        <h3>キャラクター設定資料</h3>
+        <img src="image/ナノカ（設定）.AVIF" alt="ナノカ 設定" class="setting-img">
     </div>
 
-    <a href="index.html" class="back-link">← トップページに戻る</a>
+    <div style="text-align: center;">
+        <a href="index.html" class="back-btn">トップページへ戻る</a>
+    </div>
 </div>
 
 <footer>
-    <p style="text-align: center; padding: 30px; color: #999;">&copy; 2026 SiveProject</p>
+    <p style="text-align: center; padding: 40px; color: #ccc;">&copy; 2026 SiveProject</p>
 </footer>
 
 </body>
