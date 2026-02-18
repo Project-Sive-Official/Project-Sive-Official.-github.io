@@ -9,7 +9,7 @@
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
             margin: 0; padding: 0;
             background-color: #f4f7f9;
-            color: #000000; /* ユマが変えてくれた真っ黒設定 */
+            color: #000000;
             line-height: 1.8;
         }
         header {
@@ -42,12 +42,11 @@
             border-radius: 10px;
         }
         
-        /* 詳細ページへのボタン（ユマ指定の #0CBFBD カラー！） */
+        /* 共通のボタン基本スタイル */
         .detail-btn {
             display: inline-block;
             margin-top: 15px;
             padding: 10px 24px;
-            background-color: #0CBFBD;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -55,8 +54,18 @@
             transition: 0.3s;
         }
         .detail-btn:hover {
-            background-color: #0aa8a6;
+            opacity: 0.8;
             transform: translateY(-2px);
+        }
+
+        /* 正弦波くん専用カラー！ */
+        .btn-jack {
+            background-color: #FC0254;
+        }
+
+        /* ナノカ専用カラー！ */
+        .btn-nanoka {
+            background-color: #0CBFBD;
         }
         
         .rules-section {
@@ -85,7 +94,7 @@
                 <li>UTAU本体は解凍してUTAUのvoiceフォルダへ！</li>
                 <li>MacOS・Linuxの動作確認はしておりません。​​</li>
             </ul>
-            <a href="jack.html" class="detail-btn">正弦波くんのプロフィールを見る</a>
+            <a href="jack.html" class="detail-btn btn-jack">正弦波くんのプロフィールを見る</a>
         </div>
         <div class="char-img-container">
             <img src="image/正弦波（ホーム）.JPG" alt="正弦波ジャック" class="char-img">
@@ -98,7 +107,7 @@
             <ul>
                 <li>導入手順は正弦波くんと同じです。</li>
             </ul>
-            <a href="nanoka.html" class="detail-btn">ナノカのプロフィールを見る</a>
+            <a href="nanoka.html" class="detail-btn btn-nanoka">ナノカのプロフィールを見る</a>
         </div>
         <div class="char-img-container">
             <img src="image/ナノカ（ホーム）.AVIF" alt="正幻波ナノカ" class="char-img">
@@ -106,8 +115,8 @@
     </div>
 
     <div class="rules-section">
-        <h3>⚠️ AI生成について</h3>
-        <p>AI生成は自由ですが、ネット上（SNS・動画サイト）への公開は禁止です。個人的に楽しんでね！</p>
+        <h3>⚠️ AI生成について⚠️</h3>
+        <p>AI生成は自由ですが、ネット上（SNS・動画サイト）への公開は収益を問わず禁止です。個人的に楽しんでね！</p>
     </div>
 </div>
 
