@@ -3,12 +3,11 @@
 <head>
     <meta name="description" content="SiveProjectの音源利用規約およびダウンロードページです。ご利用の前に必ず内容のご確認をお願いいたします。">
     <link rel="icon" href="IMG_1749.ico">
-<link rel="apple-touch-icon" href="IMG_1749.ico">
+    <link rel="apple-touch-icon" href="IMG_1749.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>利用規約 | SiveProject</title>
     <style>
-        /* --- 変数の設定（システム設定ベース） --- */
         :root {
             --bg-color: #fffafa;
             --container-bg: #ffffff;
@@ -18,7 +17,6 @@
             --section-bg: #fdfdfd;
         }
 
-        /* --- システムがダークモードなら自動で切り替え --- */
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-color: #121212;
@@ -30,7 +28,6 @@
             }
         }
 
-        /* --- 手動切り替え（保存された設定）用の上書き --- */
         [data-theme="light"] {
             --bg-color: #fffafa;
             --container-bg: #ffffff;
@@ -105,7 +102,6 @@
         footer {
             text-align: center;
             padding: 60px 20px;
-            font-size: 0.8rem;
             color: #888;
             border-top: 1px solid var(--border-color);
         }
@@ -166,21 +162,21 @@
 </div>
 
 <footer>
-    <div style="margin-bottom: 20px;">
+    <div style="margin-bottom: 25px;">
         <span style="font-weight: bold; color: #999;">Gmail</span><br>
-        <a href="mailto:0329.mth@gmail.com" style="color: #81D4FA; text-decoration: none; font-size: 1rem;">0329.mth@gmail.com</a>
+        <a href="mailto:0329.mth@gmail.com" style="color: #81D4FA; text-decoration: none;">0329.mth@gmail.com</a>
     </div>
-    <p style="letter-spacing: 1px;">&copy; 2026 SiveProject All Rights Reserved.</p>
+    
+    <p style="font-size: 0.75rem; color: #666; margin: 0; line-height: 1.2;">Powered by GitHub Pages</p>
+    <p style="letter-spacing: 1px; margin: 0; line-height: 1.8;">&copy; 2026 SiveProject All Rights Reserved.</p>
 </footer>
 
 <script>
-    // ホーム画面（index.html）で保存したテーマ設定を読み込んで反映するだけ！
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         document.body.setAttribute('data-theme', savedTheme);
     }
 
-    // 同意チェックのロジックはそのまま残すよ
     const checkJack = document.getElementById('check-jack');
     const dlJack = document.getElementById('dl-jack');
     const checkNanoka = document.getElementById('check-nanoka');
