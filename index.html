@@ -36,12 +36,12 @@
             
             /* 指定のキャラカラー（ライト） */
             --accent-jack: #CF0000;   
-            --accent-nanoka: #00A0AE; 
+            --accent-nanoka: #016068; /* ユマ指定カラー：コントラスト重視 */
             
             /* フッター・Gmail用（指定カラー） */
             --footer-label: #555555; 
             --gmail-color: #002AFF;   
-            --sub-text: #666666;
+            --sub-text: #555555;
         }
 
         /* 手動切り替え（データ属性） */
@@ -49,15 +49,15 @@
             --bg-color: #f4f7f9; --card-bg: #ffffff; --text-color: #1a1a1a;
             --border-color: #eaeaea; --rule-bg: #fff0f0; --rule-border: #ffcccc;
             --info-bg: #fdfdfd; --news-date: #606060;
-            --accent-jack: #CF0000; --accent-nanoka: #00A0AE;
-            --footer-label: #555555; --gmail-color: #002AFF; --sub-text: #666666;
+            --accent-jack: #CF0000; --accent-nanoka: #016068;
+            --footer-label: #555555; --gmail-color: #002AFF; --sub-text: #555555;
         }
         [data-theme="dark"] {
-            --bg-color: #121212; --card-bg: #1e1e1e; --text-color: #e0e0e0;
+            --bg-color: #121212; --card-bg: #1e1e1e; --text-color: #f0f0f0;
             --border-color: #333333; --rule-bg: #2d1a1a; --rule-border: #5c2b2b;
             --info-bg: #252525; --news-date: #b0b0b0;
             --accent-jack: #ff5c8d; --accent-nanoka: #4dd0e1;
-            --footer-label: #cccccc; --gmail-color: #81d4fa; --sub-text: #a0a0a0;
+            --footer-label: #cccccc; --gmail-color: #81d4fa; --sub-text: #b0b0b0;
         }
         
         body {
@@ -354,27 +354,22 @@
     const body = document.body;
     const toggleBtn = document.querySelector('.theme-toggle-header');
 
-    // テーマ設定を適用する共通関数
     const applyTheme = (theme) => {
         body.setAttribute('data-theme', theme);
         if (toggleBtn) toggleBtn.textContent = theme === 'dark' ? '🌙' : '🔆';
         localStorage.setItem('theme', theme);
     };
 
-    // 切り替えボタンの処理
     function toggleTheme() {
         const currentTheme = body.getAttribute('data-theme');
         const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
         applyTheme(nextTheme);
     }
 
-    // 初期化処理：チラつきを抑えるために即時実行
     (function initTheme() {
         const savedTheme = localStorage.getItem('theme');
         const osPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        // 保存設定 > OS設定 > デフォルト(light)
         const initialTheme = savedTheme || (osPrefersDark ? 'dark' : 'light');
-
         applyTheme(initialTheme);
     })();
 </script>
