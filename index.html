@@ -328,21 +328,41 @@
     </div>
 </div>
 <script>
-    function toggleTheme() {
-        const body = document.body;
-        const currentTheme = body.getAttribute('data-theme');
-        if (currentTheme === 'dark') {
-            body.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-        } else {
-            body.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
+    const body = document.body;
+    const toggleBtn = document.querySelector('.theme-toggle-header');
+
+    // ボタンの絵文字を更新する関数
+    function updateButton(theme) {
+        if (toggleBtn) {
+            toggleBtn.textContent = theme === 'dark' ? '🌙' : '🔆';
         }
     }
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        document.body.setAttribute('data-theme', savedTheme);
+
+    // トグル処理
+    function toggleTheme() {
+        let current = body.getAttribute('data-theme');
+        if (!current) {
+            current = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        const newTheme = current === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateButton(newTheme);
     }
+
+    // ページ読み込み時の初期設定
+    function initTheme() {
+        let theme = localStorage.getItem('theme');
+        if (!theme) {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        body.setAttribute('data-theme', theme);
+        updateButton(theme);
+    }
+
+    // 実行
+    window.addEventListener('load', initTheme);
 </script>
 <footer>
     <div style="margin-bottom: 25px;">
