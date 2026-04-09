@@ -8,38 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>正幻波ナノカ | SiveProject</title>
     <style>
+        /* --- 変数定義 --- */
         :root {
-            --bg-color: #ffffff;
+            /* ライトモード：ユマ指定カラーを厳守 */
+            --bg-color: #f4f7f9;
             --container-bg: #ffffff;
-            --text-color: #333333;
+            --text-color: #1a1a1a;
             --sub-text: #555555;
-            --border-color: #eeeeee;
-            --header-color: #0CBFBD; /* ナノカの水色 */
+            --border-color: #eaeaea;
+            --header-color: #00A0AE; /* ナノカ指定カラー */
+            --gmail-link: #002AFF;   /* Gmail指定カラー */
         }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #121212;
-                --container-bg: #1e1e1e;
-                --text-color: #e0e0e0;
-                --sub-text: #bbbbbb;
-                --border-color: #333333;
-            }
-        }
-
-        [data-theme="light"] {
-            --bg-color: #ffffff;
-            --container-bg: #ffffff;
-            --text-color: #333333;
-            --sub-text: #555555;
-            --border-color: #eeeeee;
-        }
+        /* ダークモード */
         [data-theme="dark"] {
             --bg-color: #121212;
             --container-bg: #1e1e1e;
-            --text-color: #e0e0e0;
-            --sub-text: #bbbbbb;
+            --text-color: #f0f0f0;
+            --sub-text: #b0b0b0;
             --border-color: #333333;
+            --header-color: #4dd0e1; /* ダークで見やすい色に調整 */
+            --gmail-link: #81d4fa;
         }
 
         body {
@@ -48,60 +37,82 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.8;
-            transition: 0.3s;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
             max-width: 600px;
             margin: 40px auto;
-            padding: 20px;
+            padding: 30px;
             background-color: var(--container-bg);
             border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
         }
 
         h2 {
             color: var(--header-color);
             font-size: 2.2rem;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
+            margin: 0 0 10px 0;
+            border-bottom: 2px solid var(--border-color);
             padding-bottom: 10px;
         }
 
         h3 {
             color: var(--header-color);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-top: 40px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        h3::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 1.2em;
+            background-color: var(--header-color);
+            margin-right: 10px;
+            border-radius: 2px;
         }
 
         .main-img {
             width: 100%;
             height: auto;
-            margin-bottom: 30px;
-            border-radius: 8px;
+            margin-bottom: 20px;
+            border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: block;
         }
 
         .profile-list {
             list-style: none;
             padding: 0;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
         .profile-list li {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .profile-list strong {
+            color: var(--header-color);
         }
 
         .audio-section {
-            margin: 20px 0;
-            padding: 15px;
+            margin: 25px 0;
+            padding: 20px;
             background-color: var(--bg-color);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 12px;
         }
 
         .story-text {
             font-size: 1rem;
-            color: var(--sub-text);
+            color: var(--text-color);
             text-align: justify;
         }
 
@@ -112,24 +123,39 @@
             text-decoration: none;
             color: var(--header-color);
             font-weight: bold;
+            transition: 0.3s;
+        }
+        .back-link:hover {
+            opacity: 0.7;
         }
 
         footer {
             text-align: center;
             padding: 60px 20px;
-            color: #888;
+            color: var(--sub-text);
             border-top: 1px solid var(--border-color);
+        }
+
+        .footer-gmail-link {
+            color: var(--gmail-link);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .container { margin: 20px 10px; padding: 20px; }
+            h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
-<body>
+<body data-theme="light">
 
-<div class="container">
-    <img src="image/IMG_2139.webp" alt="正幻波ナノカ" class="main-img">
+<main class="container">
+    <img src="image/IMG_2139.webp" alt="正幻波ナノカの立ち絵" class="main-img" width="480" height="854">
 
     <h2>正幻波ナノカ</h2>
     
-    <h3>正幻波ナノカのプロフィール</h3>
+    <h3>プロフィール</h3>
     <ul class="profile-list">
         <li><strong>名前：</strong>正幻波ナノカ</li>
         <li><strong>年齢：</strong>12歳</li>
@@ -138,11 +164,11 @@
     </ul>
 
     <div class="audio-section">
-        <p style="font-size: 0.8rem; margin-bottom: 8px; font-weight: bold;">🎵 ボイスサンプル：きらきら星</p>
+        <p style="font-size: 0.85rem; margin-bottom: 10px; font-weight: bold;">🎵 ボイスサンプル：きらきら星</p>
         <audio controls src="image/ナノカキラキラ星.wav" style="width: 100%; height: 40px;"></audio>
     </div>
 
-    <h3>正幻波ナノカの設定</h3>
+    <h3>詳細設定</h3>
     <div class="story-text">
         <p>正幻波ナノカは、UTAU世界のデジタルな波形データの中から「ナノデータ」として生まれた存在です。</p>
         <p>本来、データはただの情報の集まりに過ぎませんが、彼女は生まれたその瞬間に、不思議と豊かな「感情」を宿しました。</p>
@@ -151,23 +177,25 @@
     </div>
 
     <a href="index.html" class="back-link">← TOPへ戻る</a>
-</div>
+</main>
 
 <footer>
     <div style="margin-bottom: 25px;">
-        <span style="font-weight: bold; color: #999;">Gmail</span><br>
-        <a href="mailto:0329.mth@gmail.com" style="color: #81D4FA; text-decoration: none;">0329.mth@gmail.com</a>
+        <span style="font-weight: bold;">Gmail</span><br>
+        <a href="mailto:0329.mth@gmail.com" class="footer-gmail-link">0329.mth@gmail.com</a>
     </div>
     
-    <p style="font-size: 0.75rem; color: #666; margin: 0;">Powered by GitHub Pages</p>
-    <p style="letter-spacing: 1px; margin: 0;">&copy; 2026 SiveProject All Rights Reserved.</p>
+    <p style="font-size: 0.75rem; margin: 0; line-height: 1.2;">Powered by GitHub Pages</p>
+    <p style="letter-spacing: 1px; margin: 0; line-height: 1.8;">&copy; 2026 SiveProject All Rights Reserved.</p>
 </footer>
 
 <script>
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        document.body.setAttribute('data-theme', savedTheme);
-    }
+    (function initTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const osPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialTheme = savedTheme || (osPrefersDark ? 'dark' : 'light');
+        document.body.setAttribute('data-theme', initialTheme);
+    })();
 </script>
 
 </body>
