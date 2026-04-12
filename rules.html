@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,20 +9,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>利用規約 | SiveProject</title>
     <style>
-        /* --- 変数定義 --- */
         :root {
             --bg-color: #fffafa;
             --container-bg: #ffffff;
-            --text-color: #1a1a1a;
+            --text-color: #000000;
             --sub-text: #444444;
             --border-color: #eeeeee;
             --section-bg: #fdfdfd;
-            /* ライトモード指定色 */
-            --jack-color: #CF0000;
-            --nanoka-color: #016068;
-            --gmail-link: #002AFF;
         }
 
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --container-bg: #1e1e1e;
+                --text-color: #e0e0e0;
+                --sub-text: #bbbbbb;
+                --border-color: #333333;
+                --section-bg: #252525;
+            }
+        }
+
+        [data-theme="light"] {
+            --bg-color: #fffafa;
+            --container-bg: #ffffff;
+            --text-color: #000000;
+            --sub-text: #444444;
+            --border-color: #eeeeee;
+            --section-bg: #fdfdfd;
+        }
         [data-theme="dark"] {
             --bg-color: #121212;
             --container-bg: #1e1e1e;
@@ -29,10 +44,6 @@
             --sub-text: #bbbbbb;
             --border-color: #333333;
             --section-bg: #252525;
-            /* ダークモード用調整色 */
-            --jack-color: #ff5c8d;
-            --nanoka-color: #4dd0e1;
-            --gmail-link: #81d4fa;
         }
 
         body {
@@ -41,7 +52,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.8;
-            transition: background-color 0.3s, color 0.3s;
+            transition: 0.3s;
         }
 
         .container {
@@ -54,18 +65,17 @@
         }
 
         h2 { text-align: center; font-size: 2rem; margin-bottom: 30px; }
-        
-        .ch-section { margin-bottom: 50px; padding: 25px; border-radius: 12px; transition: 0.3s; }
-        .jack-border { border: 2px solid var(--jack-color); }
-        .nanoka-border { border: 2px solid var(--nanoka-color); }
+        .ch-section { margin-bottom: 50px; padding: 20px; border-radius: 10px; }
+        .jack-border { border: 2px solid #FC0254; }
+        .nanoka-border { border: 2px solid #0CBFBD; }
         
         h3 { margin-top: 0; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); }
-        .jack-title { color: var(--jack-color); }
-        .nanoka-title { color: var(--nanoka-color); }
+        .jack-title { color: #FC0254; }
+        .nanoka-title { color: #0CBFBD; }
 
         .rule-list { list-style: decimal; padding-left: 20px; }
         .rule-list li { margin-bottom: 12px; font-weight: bold; }
-        .rule-list li span { font-weight: normal; display: block; color: var(--sub-text); font-size: 0.95rem; }
+        .rule-list li span { font-weight: normal; display: block; color: var(--sub-text); }
 
         .dl-btn-container {
             text-align: center;
@@ -75,52 +85,36 @@
             border-top: 1px dashed var(--border-color);
             border-radius: 0 0 10px 10px;
         }
-        .check-area { margin-bottom: 15px; font-size: 0.95rem; cursor: pointer; display: inline-block; }
-        
+        .check-area { margin-bottom: 15px; font-size: 0.9rem; cursor: pointer; }
         .dl-btn {
             display: inline-block;
-            padding: 12px 40px;
+            padding: 12px 30px;
             color: white !important;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             transition: 0.3s;
             pointer-events: none;
-            background-color: #444444;
+            background-color: #ccc;
         }
 
-        .back-link { display: block; text-align: center; margin-top: 40px; text-decoration: none; color: var(--text-color); font-weight: bold; opacity: 0.8; }
-        .back-link:hover { opacity: 1; }
+        .back-link { display: block; text-align: center; margin-top: 40px; text-decoration: none; color: var(--text-color); font-weight: bold; }
         
         footer {
             text-align: center;
             padding: 60px 20px;
-            color: var(--sub-text);
+            color: #888;
             border-top: 1px solid var(--border-color);
-        }
-        .footer-gmail-link { color: var(--gmail-link); text-decoration: none; font-weight: bold; }
-
-        @media (max-width: 600px) {
-            .container { margin: 20px 10px; padding: 20px; }
         }
     </style>
 </head>
-<body data-theme="light">
+<body>
 
-<script>
-    /* チラつき防止：即座にテーマ適用 */
-    (function() {
-        const savedTheme = localStorage.getItem('theme');
-        const osPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.body.setAttribute('data-theme', savedTheme || (osPrefersDark ? 'dark' : 'light'));
-    })();
-</script>
-
-<main class="container">
+<div class="container">
     <h2>利用規約</h2>
-    <p style="text-align: center; font-size: 0.9rem;">規約を最後まで確認し、同意いただける方のみダウンロードしてください。</p>
+    <p style="text-align: center;">規約を最後まで確認し、同意いただける方のみダウンロードしてください。</p>
 
-    <section class="ch-section jack-border">
+    <div class="ch-section jack-border">
         <h3 class="jack-title">正弦波ジャック 利用規約</h3>
         <ol class="rule-list">
             <li>マジックツリーハウス関連の禁止事項<span>児童書『マジックツリーハウス』のジャックとしての使用はできません。</span></li>
@@ -129,23 +123,23 @@
             <li>声質について<span>正弦波特有のロボ声を個性として楽しんでください。</span></li>
             <li>設定の追加・変更<span>プロフィールの追加はOKですが、公式設定自体の変更はNGです。</span></li>
             <li>再配布の禁止<span>音源データの再配布は一律禁止です。</span></li>
-            <li>商用利用（実体のあるもの）<span><strong style="color:var(--jack-color);">グッズ販売（アクスタ、缶バッジ、本など形に残るもの）による商用利用は一切禁止です。</strong></span></li>
+            <li>商用利用（実体のあるもの）<span><strong style="color:#FC0254;">グッズ販売（アクスタ、缶バッジ、本など形に残るもの）による商用利用は一切禁止です。</strong></span></li>
             <li>商用利用（デジタル作品）<span>上記すべての規約を守れる方のみ、デジタル作品での商用利用を許可します。</span></li>
         </ol>
-        <p style="color: var(--jack-color); font-weight: bold; font-size: 0.85rem; margin-top: 15px;">※著作権侵害（特に実体グッズ関連）をしない以外に無駄な責任は負いたくないので宜しくお願いします！</p>
+        <p style="color: #FC0254; font-weight: bold; font-size: 0.9rem;">※著作権侵害（特に実体グッズ関連）をしない以外に無駄な責任は負いたくないので宜しくお願いします！</p>
         
         <div class="dl-btn-container">
             <label class="check-area">
                 <input type="checkbox" id="check-jack"> 正弦波ジャックの規約に同意する
             </label>
             <br>
-            <a href="https://drive.google.com/file/d/1SoOsIn9nPLVyyoswbkJz9BGGtPBCnqbB/view?usp=sharing" class="dl-btn">ダウンロード</a>
+            <a href="https://drive.google.com/file/d/1SoOsIn9nPLVyyoswbkJz9BGGtPBCnqbB/view?usp=drive_link" id="dl-jack" class="dl-btn">ダウンロード</a>
         </div>
-    </section>
+    </div>
 
-    <section class="ch-section nanoka-border">
+    <div class="ch-section nanoka-border">
         <h3 class="nanoka-title">正幻波ナノカ 利用規約</h3>
-        <p style="font-size: 0.85rem; margin-bottom: 10px; opacity: 0.8;">（ナノカは完全オリジナルのため、個人範囲のグッズ販売もOKです）</p>
+        <p style="font-size: 0.9rem; margin-bottom: 10px; opacity: 0.8;">（ナノカは完全オリジナルのため、個人範囲のグッズ販売もOKです）</p>
         <ol class="rule-list">
             <li>音源データの扱い<span>データの改変は行わないでください。</span></li>
             <li>二次創作の範囲<span>大歓迎です！公序良俗に反する使用は禁止します。</span></li>
@@ -163,42 +157,40 @@
             <br>
             <a href="https://drive.google.com/file/d/1JuWuyCWI31jgzOWDDDaE4jrfQKfZ-UpH/view?usp=sharing" id="dl-nanoka" class="dl-btn">ダウンロード</a>
         </div>
-    </section>
+    </div>
 
     <a href="index.html" class="back-link">← TOPへ戻る</a>
-</main>
-<div style="text-align:center; margin:30px 0;">
-  <a href="https://github.com/SiveProjectOfficial/Utaun" target="_blank">
-    <img src="image/無題116_20260410031946.jpeg" alt="Utaunバナー" style="max-width:100%; height:auto;">
-  </a>
 </div>
 
 <footer>
     <div style="margin-bottom: 25px;">
-        <span style="font-weight: bold;">Gmail</span><br>
-        <a href="mailto:0329.mth@gmail.com" class="footer-gmail-link">0329.mth@gmail.com</a>
+        <span style="font-weight: bold; color: #999;">Gmail</span><br>
+        <a href="mailto:0329.mth@gmail.com" style="color: #81D4FA; text-decoration: none;">0329.mth@gmail.com</a>
     </div>
-    <p style="font-size: 0.75rem; margin: 0; line-height: 1.2;">Powered by GitHub Pages</p>
+    
+    <p style="font-size: 0.75rem; color: #666; margin: 0; line-height: 1.2;">Powered by GitHub Pages</p>
     <p style="letter-spacing: 1px; margin: 0; line-height: 1.8;">&copy; 2026 SiveProject All Rights Reserved.</p>
 </footer>
 
 <script>
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.body.setAttribute('data-theme', savedTheme);
+    }
+
     const checkJack = document.getElementById('check-jack');
     const dlJack = document.getElementById('dl-jack');
     const checkNanoka = document.getElementById('check-nanoka');
     const dlNanoka = document.getElementById('dl-nanoka');
 
-    // チェックボックスに連動して色を変える（CSS変数を使用）
     checkJack.addEventListener('change', function() {
-        const color = getComputedStyle(document.body).getPropertyValue('--jack-color');
         dlJack.style.pointerEvents = this.checked ? 'auto' : 'none';
-        dlJack.style.backgroundColor = this.checked ? color : '#ccc';
+        dlJack.style.backgroundColor = this.checked ? '#FC0254' : '#ccc';
     });
 
     checkNanoka.addEventListener('change', function() {
-        const color = getComputedStyle(document.body).getPropertyValue('--nanoka-color');
         dlNanoka.style.pointerEvents = this.checked ? 'auto' : 'none';
-        dlNanoka.style.backgroundColor = this.checked ? color : '#ccc';
+        dlNanoka.style.backgroundColor = this.checked ? '#0CBFBD' : '#ccc';
     });
 </script>
 
